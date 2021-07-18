@@ -1,46 +1,18 @@
-const isPangram = (pangram) => {
-  // trim all spaces and convert all alphabets to toLowerCase
-  let trimAndLowerCasePangram = pangram.trim().toLowerCase();
+const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
-  // convert the string to an array
-  let splitPangram = trimAndLowerCasePangram.split("");
-  // if any alphabet is not found return false and break out of loop
-  const alphabets = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
-  // else, keep looping, return true
-
-  for (let i = 0; i < splitPangram.length; i++) {
-    if (!alphabets.includes(splitPangram[i])) {
-      return false;
-    }
-  }
+const isPangram = (str) => {
+  // change strings to lowercase
+  // split strings to change it back to a string
+  // sort the strings using the Set object
+  // join the strings
+  const trimAndLowerCasePangram = [
+    ...new Set(str.toLowerCase().split(" ").join("")),
+  ]
+    .sort()
+    .join("");
+  return trimAndLowerCasePangram === alphabets;
 };
+console.log(isPangram("The quick Brown fox jumps over the lazy DOG"));
+console.log(isPangram("abcdefghijklmnopqrstuvwxyz"));
+console.log(isPangram("abcdefghpqrstuvwxyz"));
 
-console.log(isPangram("   The quick Brown fox jumps over the lazy DOG  "));
-console.log(isPangram("The quick fox jUMPs over the lazy DOG"));
